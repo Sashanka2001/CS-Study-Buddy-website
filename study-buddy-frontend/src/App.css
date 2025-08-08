@@ -1,0 +1,18 @@
+ .App {
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 20px;
+}
+
+input, textarea {
+  margin: 5px;
+  padding: 8px;
+  width: 250px;
+}
+
+button {
+  padding: 6px 12px;
+  margin: 5px;
+  cursor: pointer;
+}
+ 
