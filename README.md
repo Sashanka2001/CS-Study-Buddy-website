@@ -28,3 +28,6 @@ More updates coming soon as I continue to develop this project!
 
 1 st run the backend code -  node server.js
 2 frontend code - npm start
+3. Install the date picker - npm install react-datepicker
+npm install date-fns
+
