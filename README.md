@@ -1,6 +1,10 @@
 
+---
+
 ````markdown
 # CS Study Buddy Website 🧑🏻‍💻
+
+![CS Study Buddy Banner](https://user-images.githubusercontent.com/yourusername/banner-placeholder.png)  
 
 ## Overview
 
