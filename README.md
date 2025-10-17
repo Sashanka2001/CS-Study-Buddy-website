@@ -1,7 +1,5 @@
  # CS Study Buddy Website 🧑🏻‍💻
 
-![CS Study Buddy Banner](https://via.placeholder.com/1200x400/4F46E5/FFFFFF?text=CS+Study+Buddy+-+Your+Academic+Companion)
-
 ## 🎯 Overview
 
 **CS Study Buddy** is a comprehensive full-stack web application designed to help computer science students streamline their academic workflow. This intelligent platform serves as your personal study companion, providing centralized management for tasks, notes, schedules, and productivity tracking.
@@ -40,11 +38,6 @@ Transform your study habits, boost productivity, and stay organized throughout y
 - Mobile-first approach
 - Optimized for desktop, tablet, and mobile
 
-## 🚀 Live Demo
-
-Experience CS Study Buddy in action: [**Live Demo**](https://your-deployed-app-url.com)  
-*Demo credentials: test@example.com / demo123*
-
 ## 🖼️ Application Preview
 
 ### Dashboard Overview
@@ -82,7 +75,7 @@ Experience CS Study Buddy in action: [**Live Demo**](https://your-deployed-app-u
 ### Prerequisites
 - Node.js (v16 or higher recommended)
 - npm or yarn package manager
-- Database system (MySQL/SQLite/MongoDB)
+- Database system - SQLite
 
 ### Installation Guide
 
@@ -154,84 +147,4 @@ CS-Study-Buddy-website/
 └── package.json             # Project dependencies
 ```
 
-## 🤝 Contributing
-
-We welcome contributions from the community! Here's how you can help improve CS Study Buddy:
-
-### Development Process
-
-1. **Fork the Repository**
-   ```bash
-   git fork https://github.com/Sashanka2001/CS-Study-Buddy-website.git
-   ```
-
-2. **Create Feature Branch**
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-
-3. **Commit Your Changes**
-   ```bash
-   git commit -m "Add amazing feature"
-   ```
-
-4. **Push to Branch**
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-
-5. **Open Pull Request**
-
-### Contribution Guidelines
-- Follow existing code style and conventions
-- Write clear commit messages
-- Include relevant tests
-- Update documentation as needed
-- Ensure your code passes all tests
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for detailed information.
-
-## 🐛 Issue Reporting
-
-Found a bug or have a suggestion? Please help us improve by:
-
-1. Checking existing issues first
-2. Creating a detailed bug report with:
-   - Steps to reproduce
-   - Expected vs actual behavior
-   - Screenshots (if applicable)
-   - Environment details
-
-[**Report an Issue**](https://github.com/Sashanka2001/CS-Study-Buddy-website/issues)
-
-## 💬 Support & Community
-
-- 📧 **Email**: support@csstuddybuddy.com
-- 💬 **Discord**: [Join our community](https://discord.gg/cs-study-buddy)
-- 📚 **Documentation**: [Full documentation](docs/README.md)
-- 🐦 **Twitter**: [@CSStudyBuddy](https://twitter.com/CSStudyBuddy)
-
-## 🙏 Acknowledgments
-
-Special thanks to:
-
-- **React.js Community** for the incredible frontend framework
-- **Node.js & Express.js** teams for robust backend solutions
-- **Open Source Contributors** who make projects like this possible
-- **Beta Testers** for valuable feedback and testing
-- **CS Student Community** for inspiration and feature suggestions
-
----
-
-<div align="center">
-
-### 🎓 Start Your Organized Study Journey Today!
-
-**Built with ❤️ for CS Students Everywhere**
-
-[![GitHub stars](https://img.shields.io/github/stars/Sashanka2001/CS-Study-Buddy-website?style=social)](https://github.com/Sashanka2001/CS-Study-Buddy-website/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/Sashanka2001/CS-Study-Buddy-website?style=social)](https://github.com/Sashanka2001/CS-Study-Buddy-website/network/members)
-
-</div>
+ 
