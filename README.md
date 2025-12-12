@@ -41,13 +41,13 @@ Transform your study habits, boost productivity, and stay organized throughout y
 ## 🖼️ Application Preview
 
 ### Dashboard Overview
-![Dashboard Preview](https://via.placeholder.com/800x450/1F2937/FFFFFF?text=Personalized+Dashboard+with+Progress+Tracking)
+![Dashboard Preview](#)
 
 ### Task Management Interface
-![Tasks Preview](https://via.placeholder.com/800x450/1F2937/FFFFFF?text=Intuitive+Task+Management+System)
+![Tasks Preview](#)
 
 ### Notes Organization
-![Notes Preview](https://via.placeholder.com/800x450/1F2937/FFFFFF?text=Smart+Notes+with+Search+%26+Categories)
+![Notes Preview](#)
 
 ## 🛠️ Technology Stack
 
