@@ -7,7 +7,7 @@
 ## Key Features
 
 - **Interactive Home** – greeting banner, friendly copy, and shortcuts to todos and schedule.
-- **Todo List** – create, edit, and delete tasks synced with the backend.
+- **Todo List** – organise tasks into custom lists, mark items complete, and revisit them in a dedicated completed section.
 - **Notes** – capture study notes with inline edit support.
 - **Schedule** – track events with title, time, and date fields.
 - **Persistent API** – Express + Sequelize backed by MySQL to store data.
@@ -89,6 +89,6 @@ CS-Study-Buddy-website/
 - Introduced a sidebar navigation with a home link and route-driven pages for todos, notes, and schedule.
 - Extended schedule events to include an event date persisted through the API.
 
-Enjoy organising your study workflow with CS Study Buddy!
+ 
 
  
