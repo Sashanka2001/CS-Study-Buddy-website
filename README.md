@@ -7,7 +7,7 @@
 ## Key Features
 
 - **Interactive Home** – greeting banner, friendly copy, and shortcuts to todos and schedule.
-- **Todo List** – create, edit, and delete tasks synced with the backend.
+- **Todo List** – organise tasks into custom lists, mark items complete, and revisit them in a dedicated completed section.
 - **Notes** – capture study notes with inline edit support.
 - **Schedule** – track events with title, time, and date fields.
 - **Persistent API** – Express + Sequelize backed by MySQL to store data.
