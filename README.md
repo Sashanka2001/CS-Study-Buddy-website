@@ -89,6 +89,6 @@ CS-Study-Buddy-website/
 - Introduced a sidebar navigation with a home link and route-driven pages for todos, notes, and schedule.
 - Extended schedule events to include an event date persisted through the API.
 
-Enjoy organising your study workflow with CS Study Buddy!
+ 
 
  
