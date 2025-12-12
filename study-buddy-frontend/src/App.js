@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+import Home from './components/Home';
 import TodoList from './components/TodoList';
 import Notes from './components/Notes';
 import Schedule from './components/Schedule';
@@ -13,7 +14,8 @@ function App() {
         <Sidebar />
         <main className="content">
           <Routes>
-            <Route path="/" element={<Navigate to="/todos" replace />} />
+            <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/todos" element={<TodoList />} />
             <Route path="/notes" element={<Notes />} />
             <Route path="/schedule" element={<Schedule />} />

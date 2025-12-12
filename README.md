@@ -1,150 +1,94 @@
- # CS Study Buddy Website 🧑🏻‍💻
+# CS Study Buddy Website
 
-## 🎯 Overview
+## Overview
 
-**CS Study Buddy** is a comprehensive full-stack web application designed to help computer science students streamline their academic workflow. This intelligent platform serves as your personal study companion, providing centralized management for tasks, notes, schedules, and productivity tracking
+**CS Study Buddy** is a lightweight full-stack study assistant. It tracks todos, personal notes, and schedule items through a Node.js + MySQL API and a React single-page app. The latest refresh introduces a dedicated home page with quick actions, a sidebar-driven layout, and enhanced schedule items with event dates.
 
-Transform your study habits, boost productivity, and stay organized throughout your CS academic journey
+## Key Features
 
-## ✨ Key Features
+- **Interactive Home** – greeting banner, friendly copy, and shortcuts to todos and schedule.
+- **Todo List** – create, edit, and delete tasks synced with the backend.
+- **Notes** – capture study notes with inline edit support.
+- **Schedule** – track events with title, time, and date fields.
+- **Persistent API** – Express + Sequelize backed by MySQL to store data.
 
-### 📋 Task Management
-- Create, edit, and organize study tasks with priority levels
-- Track completion status and deadlines
-- Visual progress indicators
+## Technology Stack
 
-### 📝 Smart Notes System
-- Organize class notes by subjects and topics
-- Rich text formatting support
-- Quick search and categorization
+- **Frontend:** React 19, React Router 6, Axios, custom CSS.
+- **Backend:** Node.js, Express, Sequelize.
+- **Database:** MySQL (see `cs-study-buddy-backend/config/db.config.js`).
 
-### 🗓️ Study Scheduler
-- Interactive calendar view for study sessions
-- Time blocking for focused learning
-- Automatic schedule optimization
-
-### 🔔 Smart Reminders
-- Timely notifications for upcoming deadlines
-- Customizable alert preferences
-- Never miss important due dates
-
-### 🔐 Secure Authentication
-- Personalized user accounts
-- Secure login with JWT tokens
-- Individualized dashboard experience
-
-### 📱 Responsive Design
-- Seamless experience across all devices
-- Mobile-first approach
-- Optimized for desktop, tablet, and mobile
-
-## 🖼️ Application Preview
-
-### Dashboard Overview
-![Dashboard Preview](#)
-
-### Task Management Interface
-![Tasks Preview](#)
-
-### Notes Organization
-![Notes Preview](#)
-
-## 🛠️ Technology Stack
-
-### Frontend
-- **React.js** - Modern UI framework
-- **HTML5** - Semantic markup
-- **CSS3** - Advanced styling and animations
-- **JavaScript (ES6+)** - Client-side logic
-
-### Backend
-- **Node.js** - Server runtime environment
-- **Express.js** - Web application framework
-
-### Database
-- **MySQL** / **SQLite** / **MongoDB** - Data persistence
-
-### Additional Libraries & Tools
-- **Axios** - HTTP client for API calls
-- **React Router** - Client-side routing
-- **JWT** - Secure authentication
-- **Git & GitHub** - Version control
-
-## ⚡ Quick Start
+## Quick Start
 
 ### Prerequisites
-- Node.js (v16 or higher recommended)
-- npm or yarn package manager
-- Database system - SQLite
 
-### Installation Guide
+- Node.js 18 or later
+- npm (bundled with Node.js)
+- MySQL server with a database named `study_buddy_db`
 
-1. **Clone the Repository**
+### Installation
+
+1. **Clone the repository**
    ```bash
    git clone https://github.com/Sashanka2001/CS-Study-Buddy-website.git
    cd CS-Study-Buddy-website
    ```
 
-2. **Frontend Setup**
+2. **Install frontend dependencies**
    ```bash
-   cd frontend
+   cd study-buddy-frontend
    npm install
    ```
 
-3. **Backend Setup**
+3. **Install backend dependencies**
    ```bash
-   cd ../backend
+   cd ../cs-study-buddy-backend
    npm install
    ```
 
-4. **Environment Configuration**
-   Create `.env` file in backend directory:
-   ```env
-   DB_HOST=your_database_host
-   DB_USER=your_database_user
-   DB_PASSWORD=your_database_password
-   DB_NAME=your_database_name
-   JWT_SECRET=your_secure_secret_key
-   PORT=5000
-   ```
+4. **Configure database credentials**
 
-5. **Launch Application**
+   Update `cs-study-buddy-backend/config/db.config.js` with your MySQL host, user, password, and database name. The repository ships with sensible defaults for a local setup.
+
+5. **Run the applications**
    ```bash
-   # Terminal 1 - Backend
-   cd backend && npm start
+   # Terminal 1 – backend API
+   cd cs-study-buddy-backend
+   npm start
 
-   # Terminal 2 - Frontend  
-   cd frontend && npm start
+   # Terminal 2 – frontend dev server
+   cd study-buddy-frontend
+   npm start
    ```
 
-6. **Access Application**
-   Open [http://localhost:3000](http://localhost:3000) in your browser
+6. **Browse the app**
 
-## 📁 Project Architecture
+   Visit http://localhost:3000 to land on the new home page. Use the sidebar to switch between Home, Todo List, Notes, and Schedule. The backend listens on http://localhost:5000.
+
+## Project Structure
 
 ```
 CS-Study-Buddy-website/
-├── frontend/                 # React Application
-│   ├── public/              # Static assets
-│   └── src/
-│       ├── components/      # Reusable UI components
-│       ├── pages/           # Application screens
-│       ├── hooks/           # Custom React hooks
-│       ├── utils/           # Helper functions
-│       ├── styles/          # CSS modules
-│       └── App.js           # Main application component
-│
-├── backend/                 # Node.js Server
-│   ├── controllers/         # Business logic
-│   ├── models/              # Database models
-│   ├── routes/              # API endpoints
-│   ├── middleware/          # Custom middleware
-│   ├── config/              # Configuration files
-│   └── server.js            # Server entry point
-│
-├── docs/                    # Documentation
-├── tests/                   # Test suites
-└── package.json             # Project dependencies
+├── cs-study-buddy-backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   └── server.js
+└── study-buddy-frontend/
+    ├── public/
+    └── src/
+        ├── components/
+        ├── App.css
+        └── App.js
 ```
+
+## Recent Updates
+
+- Added a polished home page with greeting, date display, and quick action buttons.
+- Introduced a sidebar navigation with a home link and route-driven pages for todos, notes, and schedule.
+- Extended schedule events to include an event date persisted through the API.
+
+Enjoy organising your study workflow with CS Study Buddy!
 
  

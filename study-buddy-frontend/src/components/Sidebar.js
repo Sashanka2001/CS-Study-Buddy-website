@@ -1,13 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const linkClass = ({ isActive }) => (isActive ? 'nav-link active' : 'nav-link');
 
   return (
     <aside className="sidebar">
-      <h1 className="app-title">CS Study Buddy</h1>
+      <Link to="/home" className="app-title-link">
+        <h1 className="app-title">CS Study Buddy</h1>
+      </Link>
       <nav className="nav">
+        <NavLink to="/home" className={linkClass}>
+          Home
+        </NavLink>
         <NavLink to="/todos" className={linkClass}>
           Todo List
         </NavLink>
