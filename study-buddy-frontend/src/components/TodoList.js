@@ -1,4 +1,4 @@
- // src/components/TodoList.js
+// src/components/TodoList.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -10,7 +10,7 @@ const TodoList = () => {
   const [editId, setEditId] = useState(null);
   const [editTask, setEditTask] = useState("");
 
-  // Fetch existing todos
+  // Fetch existing todos from the API
   const fetchTodos = async () => {
     const res = await axios.get(API_URL);
     setTodos(res.data);
@@ -20,7 +20,6 @@ const TodoList = () => {
     fetchTodos();
   }, []);
 
-  // Add new todo
   const handleAddTodo = async () => {
     if (!task.trim()) return;
     await axios.post(API_URL, { task });
@@ -28,19 +27,16 @@ const TodoList = () => {
     fetchTodos();
   };
 
-  // Start editing a todo
   const startEditing = (todo) => {
     setEditId(todo.id);
     setEditTask(todo.task);
   };
 
-  // Cancel editing
   const cancelEditing = () => {
     setEditId(null);
     setEditTask("");
   };
 
-  // Save edited todo
   const saveEdit = async (id) => {
     if (!editTask.trim()) return;
     await axios.put(`${API_URL}/${id}`, { task: editTask });
@@ -49,52 +45,64 @@ const TodoList = () => {
     fetchTodos();
   };
 
-  // Delete todo
   const deleteTodo = async (id) => {
     await axios.delete(`${API_URL}/${id}`);
     fetchTodos();
   };
 
   return (
-    <div>
-      <h2>Todo List🧾</h2>
-      <input
-        type="text"
-        value={task}
-        placeholder="Enter a task"
-        onChange={(e) => setTask(e.target.value)}
-      />
-      <button onClick={handleAddTodo}>Add Task</button>
+    <section className="panel">
+      <h2 className="panel-title">Todo List 🧾</h2>
+      <div className="form-grid">
+        <input
+          type="text"
+          value={task}
+          placeholder="Enter a task"
+          onChange={(e) => setTask(e.target.value)}
+          className="text-input"
+        />
+        <button onClick={handleAddTodo} className="primary">
+          Add Task
+        </button>
+      </div>
 
-      <ul>
+      <ul className="item-list">
         {todos.map((todo) => (
-          <li key={todo.id}>
+          <li key={todo.id} className="item">
             {editId === todo.id ? (
               <>
                 <input
                   type="text"
                   value={editTask}
                   onChange={(e) => setEditTask(e.target.value)}
+                  className="text-input"
                 />
-                <button onClick={() => saveEdit(todo.id)}>Save</button>
-                <button onClick={cancelEditing}>Cancel</button>
+                <div className="button-group">
+                  <button onClick={() => saveEdit(todo.id)} className="primary">
+                    Save
+                  </button>
+                  <button onClick={cancelEditing} className="secondary">
+                    Cancel
+                  </button>
+                </div>
               </>
             ) : (
               <>
-                {todo.task}{" "}
-                <button onClick={() => startEditing(todo)}>Edit</button>{" "}
-                <button
-                  onClick={() => deleteTodo(todo.id)}
-                  style={{ color: "red" }}
-                >
-                  Delete
-                </button>
+                <span className="item-text">{todo.task}</span>
+                <div className="button-group">
+                  <button onClick={() => startEditing(todo)} className="secondary">
+                    Edit
+                  </button>
+                  <button onClick={() => deleteTodo(todo.id)} className="danger">
+                    Delete
+                  </button>
+                </div>
               </>
             )}
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 

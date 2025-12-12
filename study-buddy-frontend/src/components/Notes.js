@@ -1,4 +1,4 @@
- // src/components/Notes.js
+// src/components/Notes.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -50,47 +50,57 @@ const Notes = () => {
   };
 
   return (
-    <div>
-      <h2>Notes 📚</h2>
-      <textarea
-        value={noteText}
-        onChange={(e) => setNoteText(e.target.value)}
-        placeholder="Write your note here..."
-      />
-      <br />
-      <button onClick={addNote}>Add Note</button>
+    <section className="panel">
+      <h2 className="panel-title">Notes 📚</h2>
+      <div className="form-grid">
+        <textarea
+          value={noteText}
+          onChange={(e) => setNoteText(e.target.value)}
+          placeholder="Write your note here..."
+          className="text-area"
+        />
+        <button onClick={addNote} className="primary">
+          Add Note
+        </button>
+      </div>
 
-      <ul>
+      <ul className="item-list">
         {notes.map((n) => (
-          <li key={n.id}>
+          <li key={n.id} className="item">
             {editId === n.id ? (
               <>
                 <textarea
                   value={editText}
                   onChange={(e) => setEditText(e.target.value)}
+                  className="text-area"
                   rows={3}
-                  cols={40}
                 />
-                <br />
-                <button onClick={() => saveEdit(n.id)}>Save</button>
-                <button onClick={cancelEditing}>Cancel</button>
+                <div className="button-group">
+                  <button onClick={() => saveEdit(n.id)} className="primary">
+                    Save
+                  </button>
+                  <button onClick={cancelEditing} className="secondary">
+                    Cancel
+                  </button>
+                </div>
               </>
             ) : (
               <>
-                {n.note}{" "}
-                <button onClick={() => startEditing(n)}>Edit</button>{" "}
-                <button
-                  onClick={() => deleteNote(n.id)}
-                  style={{ color: "red" }}
-                >
-                  Delete
-                </button>
+                <span className="item-text">{n.note}</span>
+                <div className="button-group">
+                  <button onClick={() => startEditing(n)} className="secondary">
+                    Edit
+                  </button>
+                  <button onClick={() => deleteNote(n.id)} className="danger">
+                    Delete
+                  </button>
+                </div>
               </>
             )}
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 

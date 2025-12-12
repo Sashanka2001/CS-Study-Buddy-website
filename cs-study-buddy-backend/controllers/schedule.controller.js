@@ -7,14 +7,14 @@ exports.findAll = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  const { title, time } = req.body;
-  const event = await Schedule.create({ title, time });
+  const { title, time, date } = req.body;
+  const event = await Schedule.create({ title, time, date });
   res.json(event);
 };
 
 exports.update = async (req, res) => {
-  const { title, time } = req.body;
-  await Schedule.update({ title, time }, { where: { id: req.params.id } });
+  const { title, time, date } = req.body;
+  await Schedule.update({ title, time, date }, { where: { id: req.params.id } });
   res.json({ message: "Updated" });
 };
 
