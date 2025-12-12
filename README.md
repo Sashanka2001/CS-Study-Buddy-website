@@ -2,7 +2,7 @@
 
 ## 🎯 Overview
 
-**CS Study Buddy** is a comprehensive full-stack web application designed to help computer science students streamline their academic workflow. This intelligent platform serves as your personal study companion, providing centralized management for tasks, notes, schedules, and productivity tracking.
+**CS Study Buddy** is a comprehensive full-stack web application designed to help computer science students streamline their academic workflow. This intelligent platform serves as your personal study companion, providing centralized management for tasks, notes, schedules, and productivity tracking
 
 Transform your study habits, boost productivity, and stay organized throughout your CS academic journey.
 
