@@ -11,7 +11,7 @@ app.use("/api/todos", require("./routes/todo.routes"));
 app.use("/api/notes", require("./routes/note.routes"));
 app.use("/api/schedule", require("./routes/schedule.routes"));
 
-db.sequelize.sync().then(() => {
+db.sequelize.sync({ alter: true }).then(() => {
   console.log("Database synced");
 });
 
