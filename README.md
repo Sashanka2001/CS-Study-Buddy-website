@@ -89,7 +89,7 @@ CS-Study-Buddy-website/
 - Added a polished home page with greeting, date display, and quick action buttons.
 - Introduced a sidebar navigation with a home link and route-driven pages for todos, notes, schedule, and list management.
 - Extended schedule events to include an event date persisted through the API.
-- Implemented a Lists hub with inline create/rename/delete, plus dedicated list detail pages mirroring Microsoft To Do behaviour.
+- Implemented a Lists hub with inline create/rename/delete, plus dedicated list detail pages mirroring Microsoft To Do behaviour
 
  
 
