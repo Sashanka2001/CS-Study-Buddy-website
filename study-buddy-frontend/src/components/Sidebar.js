@@ -13,6 +13,9 @@ const Sidebar = () => {
         <NavLink to="/home" className={linkClass}>
           Home
         </NavLink>
+        <NavLink to="/lists" className={linkClass}>
+        + New Lists
+        </NavLink>
         <NavLink to="/todos" className={linkClass}>
           Todo List
         </NavLink>

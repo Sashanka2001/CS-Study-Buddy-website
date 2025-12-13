@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
+import ListBoard from './components/ListBoard';
+import ListDetail from './components/ListDetail';
 import TodoList from './components/TodoList';
 import Notes from './components/Notes';
 import Schedule from './components/Schedule';
@@ -16,8 +18,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/home" replace />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/lists" element={<ListBoard />} />
+            <Route path="/lists/:listId" element={<ListDetail />} />
             <Route path="/todos" element={<TodoList />} />
-            <Route path="/todos/:listId" element={<TodoList />} />
             <Route path="/notes" element={<Notes />} />
             <Route path="/schedule" element={<Schedule />} />
           </Routes>

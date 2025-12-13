@@ -4,6 +4,14 @@
   width: 100%;
 }
 
+.todo-layout.single-column {
+  justify-content: center;
+}
+
+.todo-layout.single-column .todo-content {
+  width: min(100%, 720px);
+}
+
 .todo-lists-panel {
   width: 240px;
   background-color: #0f172a;
@@ -176,6 +184,35 @@ body {
   background-color: #f9fafb;
 }
 
+.text-input.compact {
+  width: 100%;
+  min-width: 0;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.list-detail-wrapper {
+  width: min(100%, 760px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.list-detail-nav {
+  align-self: flex-start;
+}
+
+.list-detail {
+  width: 100%;
+}
+
+.list-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
 .text-area {
   min-height: 120px;
   resize: vertical;
@@ -293,8 +330,29 @@ body {
   font-style: italic;
 }
 
+.error-text {
+  margin: 0;
+  color: #dc2626;
+  font-size: 0.95rem;
+}
+
 .todo-completed-list .item {
   background-color: #f1f5f9;
+}
+
+.list-board {
+  width: min(100%, 720px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.list-board-items .item {
+  background-color: #f8fafc;
+}
+
+.list-board-items .item-text {
+  margin-right: 24px;
 }
 
 .home {
