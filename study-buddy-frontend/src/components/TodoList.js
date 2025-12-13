@@ -1,6 +1,5 @@
 // src/components/TodoList.js
-import React, { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 
 const API_URL = "http://localhost:5000/api/todos";
@@ -12,21 +11,25 @@ const TodoList = () => {
   const [editId, setEditId] = useState(null);
   const [editTask, setEditTask] = useState("");
   const [lists, setLists] = useState([]);
-  const params = useParams();
-  const navigate = useNavigate();
   const [selectedListId, setSelectedListId] = useState(null);
-  const [newListName, setNewListName] = useState("");
-  const [isCreatingList, setIsCreatingList] = useState(false);
+  const [editingListId, setEditingListId] = useState(null);
+  const [editingListName, setEditingListName] = useState("");
+  const [editingOriginalName, setEditingOriginalName] = useState("");
+  const editInputRef = useRef(null);
 
   // Fetch existing todos from the API
-  const fetchTodos = async (listId = selectedListId) => {
-    if (!listId) {
-      setTodos([]);
-      return;
-    }
-    const res = await axios.get(`${API_URL}?listId=${listId}`);
-    setTodos(res.data);
-  };
+  const fetchTodos = useCallback(
+    async (listIdParam) => {
+      const targetId = listIdParam ?? selectedListId;
+      if (!targetId) {
+        setTodos([]);
+        return;
+      }
+      const res = await axios.get(`${API_URL}?listId=${targetId}`);
+      setTodos(res.data);
+    },
+    [selectedListId]
+  );
 
   const fetchLists = async () => {
     const res = await axios.get(LISTS_API_URL);
@@ -37,10 +40,10 @@ const TodoList = () => {
     fetchLists();
   }, []);
 
-  const requestedListId = useMemo(() => {
-    const value = params.listId ? Number(params.listId) : null;
-    return Number.isFinite(value) ? value : null;
-  }, [params.listId]);
+  const activeList = useMemo(
+    () => lists.find((list) => list.id === selectedListId) || null,
+    [lists, selectedListId]
+  );
 
   useEffect(() => {
     if (!lists.length) {
@@ -48,23 +51,14 @@ const TodoList = () => {
       return;
     }
 
-    if (requestedListId && lists.some((list) => list.id === requestedListId)) {
-      setSelectedListId(requestedListId);
-      return;
+    if (!selectedListId || !lists.some((list) => list.id === selectedListId)) {
+      setSelectedListId(lists[0].id);
     }
-
-    const defaultId = lists[0].id;
-    setSelectedListId(defaultId);
-    if (!requestedListId) {
-      navigate(`/todos/${defaultId}`, { replace: true });
-    }
-  }, [lists, requestedListId, navigate]);
+  }, [lists, selectedListId]);
 
   useEffect(() => {
-    if (selectedListId) {
-      fetchTodos(selectedListId);
-    }
-  }, [selectedListId]);
+    fetchTodos();
+  }, [fetchTodos]);
 
   const handleAddTodo = async () => {
     if (!task.trim()) return;
@@ -111,23 +105,52 @@ const TodoList = () => {
     fetchTodos();
   };
 
+  const beginEditingList = (list) => {
+    setEditingListId(list.id);
+    setEditingListName(list.name);
+    setEditingOriginalName(list.name);
+  };
+
+  const cancelEditingList = () => {
+    setEditingListId(null);
+    setEditingListName("");
+    setEditingOriginalName("");
+  };
+
   const handleCreateList = async () => {
-    if (!newListName.trim()) {
-      return;
-    }
-    const res = await axios.post(LISTS_API_URL, { name: newListName });
-    setNewListName("");
-    setIsCreatingList(false);
+    const defaultName = "Untitled list";
+    const res = await axios.post(LISTS_API_URL, { name: defaultName });
     await fetchLists();
     setSelectedListId(res.data.id);
-    navigate(`/todos/${res.data.id}`);
+    beginEditingList({ id: res.data.id, name: defaultName });
   };
 
   const handleSelectList = (listId) => {
     setSelectedListId(listId);
     setEditId(null);
-    navigate(`/todos/${listId}`);
   };
+
+  const submitListRename = async () => {
+    if (!editingListId) {
+      return;
+    }
+    const trimmed = editingListName.trim();
+    if (!trimmed) {
+      setEditingListName(editingOriginalName);
+      cancelEditingList();
+      return;
+    }
+    await axios.put(`${LISTS_API_URL}/${editingListId}`, { name: trimmed });
+    await fetchLists();
+    cancelEditingList();
+  };
+
+  useEffect(() => {
+    if (editingListId && editInputRef.current) {
+      editInputRef.current.focus();
+      editInputRef.current.select();
+    }
+  }, [editingListId, lists]);
 
   const activeTodos = todos.filter((todo) => !todo.completed);
   const completedTodos = todos.filter((todo) => todo.completed);
@@ -182,39 +205,10 @@ const TodoList = () => {
       <aside className="todo-lists-panel">
         <div className="todo-lists-header">
           <h2>Lists</h2>
-          <button
-            className="primary"
-            onClick={() => setIsCreatingList((prev) => !prev)}
-          >
+          <button className="primary" onClick={handleCreateList}>
             + New List
           </button>
         </div>
-        {isCreatingList && (
-          <div className="todo-new-list">
-            <input
-              type="text"
-              value={newListName}
-              onChange={(e) => setNewListName(e.target.value)}
-              placeholder="List name"
-              className="text-input"
-            />
-            <div className="button-group">
-              <button className="primary" onClick={handleCreateList}>
-                Save
-              </button>
-              <button
-                className="secondary"
-                onClick={() => {
-                  setIsCreatingList(false);
-                  setNewListName("");
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        )}
-
         <ul className="todo-lists">
           {lists.map((list) => (
             <li
@@ -223,8 +217,28 @@ const TodoList = () => {
                 selectedListId === list.id ? "todo-list-item active" : "todo-list-item"
               }
               onClick={() => handleSelectList(list.id)}
+              onDoubleClick={() => beginEditingList(list)}
             >
-              {list.name}
+              {editingListId === list.id ? (
+                <input
+                  ref={editInputRef}
+                  type="text"
+                  value={editingListName}
+                  onChange={(e) => setEditingListName(e.target.value)}
+                  onBlur={submitListRename}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      submitListRename();
+                    }
+                    if (e.key === "Escape") {
+                      cancelEditingList();
+                    }
+                  }}
+                  className="text-input compact"
+                />
+              ) : (
+                list.name
+              )}
             </li>
           ))}
           {!lists.length && <li className="todo-empty">Create a list to get started.</li>}
@@ -232,7 +246,9 @@ const TodoList = () => {
       </aside>
 
       <section className="panel todo-content">
-        <h2 className="panel-title">Todo List 🧾</h2>
+        <h2 className="panel-title">
+          {activeList ? `${activeList.name} To Do List` : "Todo List"} 🧾
+        </h2>
       <div className="form-grid">
         <input
           type="text"
