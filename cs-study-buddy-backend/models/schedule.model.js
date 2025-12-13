@@ -12,5 +12,9 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATEONLY,
       allowNull: true,
     },
+    emoji: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
   });
 };
