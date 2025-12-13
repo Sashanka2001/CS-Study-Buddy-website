@@ -2,12 +2,13 @@
 
 ## Overview
 
-**CS Study Buddy** is a lightweight full-stack study assistant. It tracks todos, personal notes, and schedule items through a Node.js + MySQL API and a React single-page app. The latest refresh introduces a dedicated home page with quick actions, a sidebar-driven layout, and enhanced schedule items with event dates.
+**CS Study Buddy** is a lightweight full-stack study assistant. It tracks todos, personal notes, and schedule items through a Node.js + MySQL API and a React single-page app. The latest refresh introduces a dedicated home page with quick actions, a sidebar-driven layout, event-aware schedules, and a Microsoft To Do–inspired list hub with individual list workspaces.
 
 ## Key Features
 
 - **Interactive Home** – greeting banner, friendly copy, and shortcuts to todos and schedule.
-- **Todo List** – organise tasks into custom lists, mark items complete, and revisit them in a dedicated completed section.
+- **Todo Lists** – organise tasks into custom lists, mark items complete, and revisit them in a dedicated completed section.
+- **List Hub & Detail Pages** – create lists from the main hub, rename them inline, and jump into a focused list view (e.g. “PM To Do List”) to manage tasks without the global list sidebar.
 - **Notes** – capture study notes with inline edit support.
 - **Schedule** – track events with title, time, and date fields.
 - **Persistent API** – Express + Sequelize backed by MySQL to store data.
@@ -63,7 +64,7 @@
 
 6. **Browse the app**
 
-   Visit http://localhost:3000 to land on the new home page. Use the sidebar to switch between Home, Todo List, Notes, and Schedule. The backend listens on http://localhost:5000.
+   Visit http://localhost:3000 to land on the home page. Use the sidebar to switch between Home, Todo List, Notes, Schedule, and the new Lists hub. From Lists you can open per-list todo spaces hosted at `/lists/:id`. The backend listens on http://localhost:5000.
 
 ## Project Structure
 
@@ -86,8 +87,9 @@ CS-Study-Buddy-website/
 ## Recent Updates
 
 - Added a polished home page with greeting, date display, and quick action buttons.
-- Introduced a sidebar navigation with a home link and route-driven pages for todos, notes, and schedule.
+- Introduced a sidebar navigation with a home link and route-driven pages for todos, notes, schedule, and list management.
 - Extended schedule events to include an event date persisted through the API.
+- Implemented a Lists hub with inline create/rename/delete, plus dedicated list detail pages mirroring Microsoft To Do behaviour.
 
  
 
