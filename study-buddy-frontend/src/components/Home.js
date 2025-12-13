@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import lottieWeb from 'lottie-web';
+import kittyAnimation from '../assets/cat.json';
 
 const Home = () => {
   const today = new Date();
@@ -11,6 +13,26 @@ const Home = () => {
     month: 'long',
     day: 'numeric',
   });
+
+  const mascotRef = useRef(null);
+
+  useEffect(() => {
+    if (!mascotRef.current) {
+      return undefined;
+    }
+
+    const animationInstance = lottieWeb.loadAnimation({
+      container: mascotRef.current,
+      animationData: kittyAnimation,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+    });
+
+    return () => {
+      animationInstance.destroy();
+    };
+  }, []);
 
   return (
     <section className="home">
@@ -25,6 +47,7 @@ const Home = () => {
           <Link className="primary" to="/todos">Start With Tasks</Link>
           <Link className="secondary" to="/schedule">Plan My Week</Link>
         </div>
+        <div className="home-mascot" ref={mascotRef} aria-hidden="true" />
       </header>
 
       <section className="home-panels">
