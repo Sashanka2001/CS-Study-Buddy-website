@@ -3,3 +3,5 @@ cs-study-buddy-backend/node_modules/
 study-buddy-frontend/node_modules/
 cs-study-buddy-backend/node_modules/
 study-buddy-frontend/node_modules/
+ # Environment files
+ cs-study-buddy-backend/.env
